@@ -10,7 +10,7 @@ export default function App(){
   return (
     <>
     <Header Extract = {Extract}/>
-    <Content />
+    <Content Filtered={Filtered}/>
     </>
   )
 }
@@ -33,7 +33,7 @@ function SearchBar({Extract}){
     </>
   )
 }
-function Content(){
+function Content({Filtered}){
   const [Name,setName]=useState("")
   const [Image,setImage]=useState("")
   const [Description,setDescription]=useState("")
@@ -41,17 +41,17 @@ function Content(){
 
   return(
     <div id='main-container'>
-      <Listofmovie setName={setName} setDescription={setDescription} setImage={setImage} setRating={setRating}/>
+      <Listofmovie setName={setName} setDescription={setDescription} setImage={setImage} setRating={setRating} Filtered={Filtered}/>
       <Moviedetail name={Name} image={Image} description={Description} rating={Rating}/>
     </div>
   )
 }
-function Listofmovie({setName,setDescription,setImage,setRating}){
+function Listofmovie({setName,setDescription,setImage,setRating,Filtered}){
   return(
     <div id='container-1'>
       {
       
-      Netflixtopseries.map((e)=> < ListofmovieItems image = {e.img} series = {e.series} description={e.description} Rating={e.Rating} setName={setName} setImage={setImage} setDescription={setDescription} setRating={setRating}/>)
+      Filtered.map((e)=> < ListofmovieItems image = {e.img} series = {e.series} description={e.description} Rating={e.Rating} setName={setName} setImage={setImage} setDescription={setDescription} setRating={setRating}/>)
       }
       
     </div>
