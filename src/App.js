@@ -3,25 +3,33 @@ import './App.css';
 import Netflixtopseries from './movieList';
 
 export default function App(){
+  const [Filtered,setFiltered]=useState([])
+  function Extract(e){
+    setFiltered((ex)=>[...e])
+  }
   return (
     <>
-    <Header />
-    <Content/>
+    <Header Extract = {Extract}/>
+    <Content />
     </>
   )
 }
-function Header(){
+function Header({Extract}){
   return(
     <div id='heading-bar'>
-      <SearchBar/>
+      <SearchBar Extract ={Extract} />
 
     </div>
   )
 }
-function SearchBar(){
+function SearchBar({Extract}){
+  function Searchfuc(es){
+    const x = Netflixtopseries.filter((e)=>e.series.startsWith(es))
+    Extract(x)
+  }
   return(
     <>
-    <input placeholder='Search movie . . .'/>
+    <input placeholder='Search movie . . .' onChange={(e)=>Searchfuc(e.target.value)}/>
     </>
   )
 }
