@@ -1,0 +1,135 @@
+*{
+  margin: 0;
+}
+#heading-bar {
+  border: 1px solid rgb(224, 224, 224);
+  width: auto;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@import url('https://fonts.googleapis.com/css2?family=Average&display=swap');
+#heading-bar input {
+  font-family: "Average", serif;
+  border: 1px solid #4f5b67;
+  height: 3rem;
+  width: 20rem;
+  padding-left:1rem ;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1.1rem;
+}
+#main-container{
+  display: flex;
+  gap: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+#container-1,#container-2{
+  border: 1px solid #cfcfcf;
+  border-radius:20px ;
+  width: 30rem;
+  height: 40rem;
+}
+.poster-img{
+  height: 2rem;
+}
+#container-1 {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  overflow-x: hidden;
+  gap: 2rem;
+}
+#container-1::-webkit-scrollbar {
+  display: none;
+}
+#container-1 img {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 5px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bellefair&display=swap');
+
+.series-container {
+  font-family: "Bellefair", serif;
+  font-size: 1.3rem;
+  margin: 1rem;
+  padding-left: 2.2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+  height: 7rem;
+  width:16em;
+  cursor: pointer;
+}
+.series-container:hover{
+  border: 1px solid rgb(242, 242, 242);
+  border-radius: 10px;
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+.series-container:active{
+  border: 1px solid rgb(210, 210, 210);
+  background-color: rgb(242, 242, 242);
+}
+.series-container:checked{
+  background-color: burlywood;
+}
+#container-2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#details {
+
+  width:auto;
+}
+#details-child{
+  width: 28rem;
+  height: 35rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items: center;
+}
+@import url('https://fonts.googleapis.com/css2?family=Bayon&display=swap');
+#series-img {
+  height: 15rem;
+  width: 15rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+#series-name {
+  font-family: "Bayon", sans-serif;
+  font-size: 1.2rem;
+
+
+}
+#imdb-container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 10rem;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  height: 3rem;
+  gap: 1rem;
+  color: rgb(144, 144, 3);
+  
+}
+#imdb {
+  height: 2rem;
+  border-radius: 5px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+#details-description{
+  font-family: "Cormorant Infant", serif;
+  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
