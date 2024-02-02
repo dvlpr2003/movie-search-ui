@@ -80,6 +80,9 @@ function Moviedetail({name,image,description,rating}){
           <div id='details-description'>
             <span>{description}</span>
           </div>
+          <div id='detail-btn-container'>
+            <button>Add Watch list</button>
+          </div>
         </div>
 
       </div>
