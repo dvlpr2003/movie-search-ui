@@ -1,6 +1,9 @@
 *{
   margin: 0;
 }
+#root{
+  position: relative;
+}
 #heading-bar {
   border: 1px solid rgb(224, 224, 224);
   width: auto;
@@ -149,4 +152,56 @@
   background-color: #c844e5;
   border-radius: 20px;
   color: white;
+}
+#play-list {
+  margin-left: auto;
+  justify-self: flex-end;
+  height: 3rem;
+  margin-right: 1.8rem;
+}
+#movie-card {
+  height: 4rem;
+  justify-self: start;
+  margin-right: auto;
+  margin-left: 1.8rem;
+}
+#search-box {
+  margin-right: auto;
+  justify-self: center;
+}
+#add-card-items {
+  top: 70px;
+  right: 30px;
+  border-radius: 20px;
+  border: 1px solid rgb(223, 223, 223);
+  width: 25rem;
+  height: 35rem;
+  position: absolute;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  flex-wrap: wrap;
+  
+}
+#add-card-items::-webkit-scrollbar {
+  display: none;
+}
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+#cart-elements {
+  font-family: "Cormorant Infant", serif;
+  margin: 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5rem;
+  font-size: 1.1rem;
+
+}
+
+#cart-elements img {
+  margin: 0.5rem;
+  border-radius: 5px;
+  height: 5rem;
+  width: 5rem;
 }

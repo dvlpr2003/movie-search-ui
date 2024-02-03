@@ -1,23 +1,40 @@
 import { useState } from 'react';
 import './App.css';
 import Netflixtopseries from './movieList';
+import Logo from './logo';
+import {Cart,CartItems} from './Cart';
+
+
 
 export default function App(){
   const [Filtered,setFiltered]=useState([])
+  const [Play,setPlay]=useState(false)
+  const [itemCart,setitemCart]=useState([])
+  
   function Extract(e){
     setFiltered((ex)=>[...e])
   }
+  function playClick(){
+    setPlay(!Play)
+    
+  }
+
+
   return (
     <>
-    <Header Extract = {Extract}/>
-    <Content Filtered={Filtered}/>
+    <Header Extract = {Extract} playClick={playClick}/>
+    <Content Filtered={Filtered} setitemCart={setitemCart} itemCart={itemCart}/>
+    <CartItems  Play={Play} itemCart={itemCart} />
+
     </>
   )
 }
-function Header({Extract}){
+function Header({Extract,playClick}){
   return(
     <div id='heading-bar'>
+      <Logo />
       <SearchBar Extract ={Extract} />
+      <Cart playClick={playClick}/>
 
     </div>
   )
@@ -29,11 +46,12 @@ function SearchBar({Extract}){
   }
   return(
     <>
-    <input placeholder='Search movie . . .' onChange={(e)=>Searchfuc(e.target.value)}/>
+    <input placeholder='Search movie . . .' onChange={(e)=>Searchfuc(e.target.value)} id='searc-box'/>
+
     </>
   )
 }
-function Content({Filtered}){
+function Content({Filtered,setitemCart,itemCart}){
   const [Name,setName]=useState("")
   const [Image,setImage]=useState("")
   const [Description,setDescription]=useState("")
@@ -42,7 +60,7 @@ function Content({Filtered}){
   return(
     <div id='main-container'>
       <Listofmovie setName={setName} setDescription={setDescription} setImage={setImage} setRating={setRating} Filtered={Filtered}/>
-      <Moviedetail name={Name} image={Image} description={Description} rating={Rating}/>
+      <Moviedetail name={Name} image={Image} description={Description} rating={Rating} setitemCart={setitemCart} itemCart={itemCart}/>
     </div>
   )
 }
@@ -74,7 +92,21 @@ function ListofmovieItems({image,series,description,Rating,setName,setDescriptio
     </div>
   )
 }
-function Moviedetail({name,image,description,rating}){
+function Moviedetail({name,image,description,rating,setitemCart,itemCart}){
+  const ele ={name:name,image:image}
+
+  function AdditemsCart(){
+    let index = itemCart.findIndex(item => item.name === ele.name) ;
+    if (index !== -1){
+      setitemCart((e)=> [...e])
+    }
+    else {
+      setitemCart((e)=> [...e,ele])
+
+    }
+    
+    
+  }
   return(
     <div id='container-2'>
       <div id='details' style={name ===""?{display:"none"}:{display:"block"}}>
@@ -89,7 +121,7 @@ function Moviedetail({name,image,description,rating}){
             <span>{description}</span>
           </div>
           <div id='detail-btn-container'>
-            <button>Add Watch list</button>
+            <button onClick={AdditemsCart}>Add Watch list</button>
           </div>
         </div>
 
