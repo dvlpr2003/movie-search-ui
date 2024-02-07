@@ -11,10 +11,15 @@ export default function App(){
   const [Play,setPlay]=useState(false)
   const [itemCart,setitemCart]=useState([])
   
+  let itemElements = itemCart
+  function remove(id){
+    setitemCart((e)=>e.filter((e)=>e.id !== id))
+  }
+
   function Extract(e){
     setFiltered((ex)=>[...e])
   }
-  function playClick(){
+  function playClick(){ 
     setPlay(!Play)
     
   }
@@ -24,7 +29,7 @@ export default function App(){
     <>
     <Header Extract = {Extract} playClick={playClick}/>
     <Content Filtered={Filtered} setitemCart={setitemCart} itemCart={itemCart}/>
-    <CartItems  Play={Play} itemCart={itemCart} />
+    <CartItems  Play={Play} itemElements={itemElements} remove={remove}/>
 
     </>
   )
@@ -54,34 +59,36 @@ function SearchBar({Extract}){
 function Content({Filtered,setitemCart,itemCart}){
   const [Name,setName]=useState("")
   const [Image,setImage]=useState("")
+  const [Id,setId]=useState(null)
   const [Description,setDescription]=useState("")
   const [Rating,setRating]=useState(null)
 
   return(
     <div id='main-container'>
-      <Listofmovie setName={setName} setDescription={setDescription} setImage={setImage} setRating={setRating} Filtered={Filtered}/>
-      <Moviedetail name={Name} image={Image} description={Description} rating={Rating} setitemCart={setitemCart} itemCart={itemCart}/>
+      <Listofmovie setName={setName} setDescription={setDescription} setImage={setImage} setRating={setRating} Filtered={Filtered} setId={setId} />
+      <Moviedetail name={Name} image={Image} description={Description} rating={Rating} setitemCart={setitemCart} itemCart={itemCart} Id = {Id}/>
     </div>
   )
 }
-function Listofmovie({setName,setDescription,setImage,setRating,Filtered}){
+function Listofmovie({setName,setDescription,setImage,setRating,Filtered,setId}){
   return(
     <div id='container-1'>
       {
       
-      Filtered.map((e)=> < ListofmovieItems image = {e.img} series = {e.series} description={e.description} Rating={e.Rating} setName={setName} setImage={setImage} setDescription={setDescription} setRating={setRating}/>)
+      Filtered.map((e)=> < ListofmovieItems image = {e.img} series = {e.series} id={e.id} description={e.description} Rating={e.Rating} setName={setName} setImage={setImage} setDescription={setDescription} setRating={setRating} setId={setId}/>)
       }
       
     </div>
   )
   }
-function ListofmovieItems({image,series,description,Rating,setName,setDescription,setImage,setRating}){
+function ListofmovieItems({image,series,description,Rating,setName,setDescription,setImage,setRating,setId,id}){
 
   function updateCont(){
     setName(series)
     setDescription(description)
     setImage(image)
     setRating(Rating)
+    setId(id)
 
 
   }
@@ -92,8 +99,8 @@ function ListofmovieItems({image,series,description,Rating,setName,setDescriptio
     </div>
   )
 }
-function Moviedetail({name,image,description,rating,setitemCart,itemCart}){
-  const ele ={name:name,image:image}
+function Moviedetail({name,image,description,rating,setitemCart,itemCart,Id}){
+  const ele ={name:name,image:image ,id:Id}
 
   function AdditemsCart(){
     let index = itemCart.findIndex(item => item.name === ele.name) ;

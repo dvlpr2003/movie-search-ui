@@ -1,3 +1,4 @@
+
 export  function Cart({playClick}){
     return (
         <>
@@ -6,22 +7,28 @@ export  function Cart({playClick}){
     )
 }
 
-export  function CartItems({Play,itemCart}){
+export  function CartItems({Play,itemElements,remove}){
+   
+    
     return <>
     <div id="add-card-items" style={Play?{display:"block"}:{display:"none"}}>
         {
-            itemCart.map(e=><Cartelements name={e.name} image ={e.image}/>)
+            itemElements.map(e=><Cartelements name={e.name} image ={e.image}  id ={e.id} remove={remove}/>)
         }
 
 
     </div>
     </>
 }
-function Cartelements({name,image}){
+function Cartelements({name,image,id,remove}){
+   
     return <>
     <div id="cart-elements">
         <img src={image} alt={name}/>
         <span>{name}</span>
+        <div id="cross-icon">
+            <img src="img/cross.png" alt="cross"  onClick={()=>remove(id)}/>
+        </div>
     </div>
     </>
 }
