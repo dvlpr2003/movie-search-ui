@@ -100,6 +100,7 @@ function ListofmovieItems({image,series,description,Rating,setName,setDescriptio
   )
 }
 function Moviedetail({name,image,description,rating,setitemCart,itemCart,Id}){
+  // Filter item 
   const ele ={name:name,image:image ,id:Id}
 
   function AdditemsCart(){
@@ -114,6 +115,7 @@ function Moviedetail({name,image,description,rating,setitemCart,itemCart,Id}){
     
     
   }
+  // Filter item
   return(
     <div id='container-2'>
       <div id='details' style={name ===""?{display:"none"}:{display:"block"}}>
